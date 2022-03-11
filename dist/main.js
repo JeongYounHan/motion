@@ -1,2 +1,2 @@
 "use strict";
-console.log("ffffff");
+console.log("main");

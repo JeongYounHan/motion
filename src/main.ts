@@ -1,1 +1,1 @@
-console.log("ffffff");
+console.log("main");
