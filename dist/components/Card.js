@@ -1,6 +1,7 @@
 export class CardImpl {
     constructor(inputCard) {
         this.inputCard = inputCard;
+        this._cardElement = document.createElement("li");
         this.setElement(inputCard);
     }
     get cardElement() {

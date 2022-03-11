@@ -24,7 +24,7 @@ export class ListImpl implements List {
   }
 
   render() {
-    this.cardList.map((item) => {
+    this._cardList.map((item) => {
       this.ulArea?.appendChild(item);
     });
   }

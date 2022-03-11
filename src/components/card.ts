@@ -1,4 +1,4 @@
-type InputType = "image" | "video" | "note" | "note";
+type InputType = "image" | "video" | "note" | "todo";
 
 type CardType = {
   title: string;
@@ -7,12 +7,13 @@ type CardType = {
 };
 
 interface Card {
-  readonly cardElement: Element | undefined;
+  readonly cardElement: Element;
 }
 
 export class CardImpl implements Card {
-  public _cardElement: Element | undefined;
+  public _cardElement: Element;
   constructor(public inputCard: CardType) {
+    this._cardElement = document.createElement("li");
     this.setElement(inputCard);
   }
 

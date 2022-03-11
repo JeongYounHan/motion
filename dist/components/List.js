@@ -15,7 +15,7 @@ export class ListImpl {
         this.render();
     }
     render() {
-        this.cardList.map((item) => {
+        this._cardList.map((item) => {
             var _a;
             (_a = this.ulArea) === null || _a === void 0 ? void 0 : _a.appendChild(item);
         });
