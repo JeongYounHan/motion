@@ -1,4 +1,4 @@
-type InputType = "image" | "video" | "note" | "todo";
+export type InputType = "image" | "video" | "note" | "todo";
 
 type CardType = {
   title: string;
