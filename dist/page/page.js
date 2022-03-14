@@ -1,12 +1,11 @@
-import { ListImpl } from "../components/list.js";
-export class PageComponent {
+import { BaseComponent } from "./../components/component.js";
+import { ListImpl } from "../components/page/list.js";
+export class PageComponent extends BaseComponent {
     constructor() {
-        this.element = document.createElement("ul");
+        super();
+        this.element = document.createElement("article");
         this.element.classList.add("page");
-        this.list = new ListImpl(this.element);
-        this.list.render();
-    }
-    attachTo(parent, position = "afterbegin") {
-        parent.insertAdjacentElement(position, this.element);
+        const list = new ListImpl();
+        list.attachTo(this.element, "beforeend");
     }
 }
