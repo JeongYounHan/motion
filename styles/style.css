@@ -106,7 +106,7 @@ body {
   background-color: var(--accent-color);
 }
 
-.card > img {
+.note__body {
   width: 50%;
 }
 

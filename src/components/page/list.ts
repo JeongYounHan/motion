@@ -1,22 +1,21 @@
+import { Card, Composable } from "./card.js";
+import { Image } from "./image.js";
 import { Note } from "./note.js";
-import { BaseComponent } from "./../component.js";
-import { CardImpl } from "./card.js";
+import { BaseComponent, Component } from "../component.js";
 
-export class ListImpl extends BaseComponent<HTMLUListElement> {
+export class ListImpl extends BaseComponent<HTMLUListElement> implements Composable {
   constructor() {
     super(`<ul class="list"></ul>`);
-    const tempCard = new CardImpl({ title: "hey", content: "it's note", type: "note" });
-    const tempCard2 = new CardImpl({ title: "image", content: "https://wonism.github.io/static/js-401cd01e8522c5d16b93f7a237b81943.jpg", type: "image" });
     const tempCardNote = new Note("note title", "note body");
+    const tempCardImage = new Image("image title", "https://wonism.github.io/static/js-401cd01e8522c5d16b93f7a237b81943.jpg");
 
-    this.push(tempCard.cardElement);
-    this.push(tempCard2.cardElement);
     tempCardNote.attachTo(this.element, "beforeend");
+    tempCardImage.attachTo(this.element, "beforeend");
   }
 
-  push(cardElement: HTMLLIElement) {
-    this.element.appendChild(cardElement);
+  addChild(section: Component) {
+    const item = new Card();
+    item.addChild(section);
+    item.attachTo(this.element, "beforeend");
   }
-
-  delete() {}
 }
