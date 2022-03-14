@@ -9,6 +9,7 @@ export class CardImpl {
     }
     setElement(inputCard) {
         const listElement = document.createElement("li");
+        listElement.setAttribute("class", "card");
         const h2Tag = document.createElement("h2");
         h2Tag.innerText = inputCard.title;
         listElement.appendChild(h2Tag);

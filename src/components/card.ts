@@ -7,11 +7,11 @@ type CardType = {
 };
 
 interface Card {
-  readonly cardElement: Element;
+  readonly cardElement: HTMLLIElement;
 }
 
 export class CardImpl implements Card {
-  public _cardElement: Element;
+  public _cardElement: HTMLLIElement;
   constructor(public inputCard: CardType) {
     this._cardElement = document.createElement("li");
     this.setElement(inputCard);
@@ -23,6 +23,7 @@ export class CardImpl implements Card {
 
   setElement(inputCard: CardType) {
     const listElement = document.createElement("li");
+    listElement.setAttribute("class", "card");
 
     const h2Tag = document.createElement("h2");
     h2Tag.innerText = inputCard.title;
