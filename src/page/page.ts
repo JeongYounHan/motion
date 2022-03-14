@@ -1,4 +1,4 @@
-import { ListImpl } from "./list.js";
+import { ListImpl } from "../components/list.js";
 
 export class PageComponent {
   private element: HTMLUListElement;

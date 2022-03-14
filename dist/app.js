@@ -1,4 +1,4 @@
-import { PageComponent } from "./components/page.js";
+import { PageComponent } from "./page/page.js";
 class App {
     constructor(appRoot) {
         this.page = new PageComponent();

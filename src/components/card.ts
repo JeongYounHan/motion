@@ -14,6 +14,9 @@ export class CardImpl implements Card {
   public _cardElement: HTMLLIElement;
   constructor(public inputCard: CardType) {
     this._cardElement = document.createElement("li");
+    // template만들어서도 가능
+    const template = document.createElement("template");
+    template.innerHTML = `<section></section>`;
     this.setElement(inputCard);
   }
 
