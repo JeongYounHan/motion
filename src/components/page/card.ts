@@ -6,7 +6,11 @@ export interface Composable {
 
 type OnCloseListener = () => void;
 
-export class Card extends BaseComponent<HTMLLIElement> implements Composable {
+export interface SectionContainer extends Component, Composable {
+  setOnCloseListener(listener: OnCloseListener): void;
+}
+
+export class Card extends BaseComponent<HTMLLIElement> implements SectionContainer {
   private closeListener?: OnCloseListener;
   constructor() {
     super(`<li class="card"><section class="page-item__body"></section><div class="page-item__controls"><button class="close">&times;</button></div></li>`);
