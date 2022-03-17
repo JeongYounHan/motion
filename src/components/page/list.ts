@@ -9,13 +9,16 @@ export class ListImpl extends BaseComponent<HTMLUListElement> implements Composa
     const tempCardNote = new Note("note title", "note body");
     const tempCardImage = new Image("image title", "https://wonism.github.io/static/js-401cd01e8522c5d16b93f7a237b81943.jpg");
 
-    tempCardNote.attachTo(this.element, "beforeend");
-    tempCardImage.attachTo(this.element, "beforeend");
+    this.addChild(tempCardNote);
+    this.addChild(tempCardImage);
   }
 
-  addChild(section: Component) {
+  addChild(child: Component) {
     const item = new Card();
-    item.addChild(section);
+    item.addChild(child);
     item.attachTo(this.element, "beforeend");
+    item.setOnCloseListener(() => {
+      item.removeFrom(this.element);
+    });
   }
 }
