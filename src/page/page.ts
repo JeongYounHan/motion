@@ -1,4 +1,4 @@
-import { InputDialog } from "./../components/page/dialog.js";
+import { InputDialog } from "../components/dialog/dialog.js";
 import { Card } from "./../components/page/card.js";
 import { BaseComponent } from "./../components/component.js";
 import { ListImpl } from "../components/page/list.js";
