@@ -7,20 +7,23 @@ import { ListImpl } from "../components/list/list.js";
 export class PageComponent extends BaseComponent {
     constructor() {
         super(`<article class="page"></article>`);
-        const list = new ListImpl(Card);
-        list.attachTo(this.element, "beforeend");
-        const imageBtn = document.querySelector("#new-image");
-        imageBtn.addEventListener("click", () => {
+        this.list = new ListImpl(Card);
+        this.list.attachTo(this.element, "beforeend");
+        this.bindElementToDialog("#new-image", MediaSectionInput, (input) => new Image(input.title, input.url));
+    }
+    bindElementToDialog(selector, InputComponent, makeSection) {
+        const element = document.querySelector(selector);
+        element.addEventListener("click", () => {
             const dialog = new InputDialog();
-            const mediaInputSection = new MediaSectionInput();
-            dialog.addChild(mediaInputSection);
+            const input = new InputComponent();
+            dialog.addChild(input);
             dialog.attachTo(document.body);
             dialog.setOnCloseListener(() => {
                 dialog.removeFrom(document.body);
             });
             dialog.setOnSubmitListener(() => {
-                const tempCardImage = new Image(mediaInputSection.title, mediaInputSection.url);
-                list.addChild(tempCardImage);
+                const child = makeSection(input);
+                this.list.addChild(child);
                 dialog.removeFrom(document.body);
             });
         });
