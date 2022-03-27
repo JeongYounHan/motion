@@ -1,7 +1,7 @@
 import { InputDialog } from "../components/dialog/dialog.js";
-import { Card } from "./../components/page/card.js";
+import { Card } from "../components/list/card.js";
 import { BaseComponent } from "./../components/component.js";
-import { ListImpl } from "../components/page/list.js";
+import { ListImpl } from "../components/list/list.js";
 export class PageComponent extends BaseComponent {
     constructor() {
         super(`<article class="page"></article>`);
