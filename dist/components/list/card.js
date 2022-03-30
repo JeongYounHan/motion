@@ -6,6 +6,33 @@ export class Card extends BaseComponent {
         closeBtn.onclick = () => {
             this.closeListener && this.closeListener();
         };
+        this.element.addEventListener("dragstart", (event) => {
+            this.onDragStart(event);
+        });
+        this.element.addEventListener("dragend", (event) => {
+            this.onDragEnd(event);
+        });
+        this.element.addEventListener("dragenter", (event) => {
+            this.onDragEnter(event);
+        });
+        this.element.addEventListener("dragleave", (event) => {
+            this.onDragLeave(event);
+        });
+    }
+    onDragStart(_) {
+        this.notifyDragObservers("start");
+    }
+    onDragEnd(_) {
+        this.notifyDragObservers("stop");
+    }
+    onDragEnter(_) {
+        this.notifyDragObservers("enter");
+    }
+    onDragLeave(_) {
+        this.notifyDragObservers("leave");
+    }
+    notifyDragObservers(state) {
+        this.dragStateListener && this.dragStateListener(this, state);
     }
     addChild(child) {
         const container = this.element.querySelector(".page-item__body");
@@ -13,5 +40,8 @@ export class Card extends BaseComponent {
     }
     setOnCloseListener(listener) {
         this.closeListener = listener;
+    }
+    setOnDragStateListener(listener) {
+        this.dragStateListener = listener;
     }
 }

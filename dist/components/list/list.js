@@ -11,5 +11,8 @@ export class ListImpl extends BaseComponent {
         item.setOnCloseListener(() => {
             item.removeFrom(this.element);
         });
+        item.setOnDragStateListener((target, state) => {
+            console.log(target, state);
+        });
     }
 }

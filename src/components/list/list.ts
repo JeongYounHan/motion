@@ -1,4 +1,4 @@
-import { Composable, SectionContainer } from "./card.js";
+import { Composable, SectionContainer, DragState } from "./card.js";
 // import { Image } from "./image.js";
 // import { Note } from "./note.js";
 import { BaseComponent, Component } from "../component.js";
@@ -18,6 +18,9 @@ export class ListImpl extends BaseComponent<HTMLUListElement> implements Composa
     item.attachTo(this.element, "beforeend");
     item.setOnCloseListener(() => {
       item.removeFrom(this.element);
+    });
+    item.setOnDragStateListener((target: SectionContainer, state: DragState) => {
+      console.log(target, state);
     });
   }
 }
